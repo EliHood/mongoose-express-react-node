@@ -117,7 +117,7 @@ class LoginPage extends Component {
       <>
         <Container>
           <div className="center">
-            <p> username:ayuba and password:ayuba</p>
+            <p> Input your login credentials</p>
           </div>
 
           <Row className="full-height align-items-center justify-content-center">

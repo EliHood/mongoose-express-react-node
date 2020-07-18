@@ -21,39 +21,61 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-    // this.fetchListOfCountries();
+  async componentDidMount() {
+    this.fetchListOfCountries();
     // console.log("url", window.location.href);
-    this.sendrequest();
+    // this.sendrequest();
+    // console.log("the data", response.data);
+    return () => {
+      axios.interceptors.request.use((request) => {
+        console.log("Starting Request", request);
+        return request;
+      });
+
+      axios.interceptors.response.use((response) => {
+        console.log("Response:", response);
+        return response;
+      });
+    };
   }
 
-  sendrequest = async () => {
-    // const { outputFormat, params } = obj;
+  // sendrequest = async () => {
+  //   // const { outputFormat, params } = obj;
 
-    const instance = axios.create({
-      baseURL: `https://mernaddonsapp.herokuapp.com/`,
-    });
+  //   const instance = axios.create({
+  //     baseURL: "https://mernaddonsapp.herokuapp.com",
+  //   });
 
-    instance.interceptors.request.use(
-      function (config) {
-        console.log(config);
-        return config;
-      },
-      function (error) {
-        return Promise.reject(error);
-      }
-    );
+  //   instance.interceptors.request.use(
+  //     function (config) {
+  //       console.log("thj", config);
+  //       return config;
+  //     },
+  //     function (error) {
+  //       return Promise.reject(error);
+  //     }
+  //   );
+  //   let token = localStorage.getItem("auth-token");
 
-    const response = await instance.get(
-      (`/api/countries/search`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": token,
-        },
-      })
-    );
-  };
+  //   instance
+  //     .get(
+  //       ("/api/countries/search",
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           "x-access-token": token,
+  //         },
+  //       })
+  //     )
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+
+  //   // return response;
+  // };
 
   // fetchListOfCountries = () => {
   //     let token = localStorage.getItem("auth-token");
@@ -75,10 +97,22 @@ class App extends React.Component {
   //         });
   // }
 
+  // https://stackoverflow.com/questions/41751235/how-to-log-all-axios-calls-from-one-place-in-code
+  // https://www.loggly.com/blog/best-practices-for-client-side-logging-and-error-handling-in-react/
+
   fetchListOfCountries = async () => {
     let token = localStorage.getItem("auth-token");
+    // axios.interceptors.request.use((request) => {
+    //   console.log("Starting Request", request);
+    //   return request;
+    // });
+
+    // axios.interceptors.response.use((response) => {
+    //   console.log("Response:", response);
+    //   return response;
+    // });
     try {
-      const response = await axios.get("/api/countries/search", {
+      const response = await axios.get(`/api/countries/search`, {
         headers: {
           "Content-Type": "application/json",
           "x-access-token": token,

@@ -112,8 +112,15 @@ class App extends React.Component {
     //   return response;
     // });
     try {
-      const response = await axios.get(`https://restcountries.eu/rest/v2/all`);
-      console.log(response);
+      const response = await axios.get(
+        `process.env.REACT_APP_BASE_URL + /api/countries/search`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": token,
+          },
+        }
+      );
       this.setState({ listOfCountries: response.data });
       this.setState({ display: true });
       console.log(this.state.listOfCountries);

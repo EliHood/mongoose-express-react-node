@@ -1,10 +1,10 @@
 import React from "react";
-const axios = require("axios");
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Search from "./Search";
 import Search2 from "./Search2";
 import Search3 from "./Search3";
+const axios = require("axios");
 // import Cookies from 'universal-cookie';
 
 // const cookies = new Cookies();

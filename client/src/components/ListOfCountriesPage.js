@@ -123,7 +123,7 @@ class App extends React.Component {
       console.log(this.state.listOfCountries);
     } catch (e) {
       console.log(e.message);
-      alert(e.message);
+      // alert(e.message);
     }
   };
 

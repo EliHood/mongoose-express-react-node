@@ -22,21 +22,8 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    // this.fetchListOfCountries();
-    try {
-      const response = await axios.get("/api/countries/search", {
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": token,
-        },
-      });
-      this.setState({ listOfCountries: response.data });
-      this.setState({ display: true });
-      console.log(this.state.listOfCountries);
-    } catch (e) {
-      console.log(e.message);
-      alert(e.message);
-    }
+    this.fetchListOfCountries();
+    console.log("url", window.location.href);
   }
 
   // fetchListOfCountries = () => {

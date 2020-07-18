@@ -21,10 +21,39 @@ class App extends React.Component {
     };
   }
 
-  async componentDidMount() {
-    this.fetchListOfCountries();
-    console.log("url", window.location.href);
+  componentDidMount() {
+    // this.fetchListOfCountries();
+    // console.log("url", window.location.href);
+    this.sendrequest();
   }
+
+  sendrequest = async () => {
+    // const { outputFormat, params } = obj;
+
+    const instance = axios.create({
+      baseURL: `https://mernaddonsapp.herokuapp.com/`,
+    });
+
+    instance.interceptors.request.use(
+      function (config) {
+        console.log(config);
+        return config;
+      },
+      function (error) {
+        return Promise.reject(error);
+      }
+    );
+
+    const response = await instance.get(
+      (`/api/countries/search`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": token,
+        },
+      })
+    );
+  };
 
   // fetchListOfCountries = () => {
   //     let token = localStorage.getItem("auth-token");

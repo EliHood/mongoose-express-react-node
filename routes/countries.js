@@ -26,29 +26,29 @@ filterBySearch = async (array, string) => {
 //     });
 // }
 
-// router.get("/search", auth.isAuthenticated, async (req, res) => {
-//   let url = `https://restcountries.eu/rest/v2/all`;
-//   try {
-//     let response = await axios.get(url);
-//     console.log(response.data);
-//     res.status(200).json(response.data);
-//   } catch (e) {
-//     console.log(e);
-//   }
-// });
-
 router.get("/search", auth.isAuthenticated, async (req, res) => {
   let url = `https://restcountries.eu/rest/v2/all`;
-  fetch(`https://restcountries.eu/rest/v2/all`)
-    .then((response) => response.json())
-    .then((json) => {
-      console.log(json);
-      return res.status(200).json(json);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  try {
+    let response = await axios.get(url);
+    console.log(response.data);
+    res.status(200).json(response.data);
+  } catch (e) {
+    console.log(e);
+  }
 });
+
+// router.get("/search", auth.isAuthenticated, async (req, res) => {
+//   let url = `https://restcountries.eu/rest/v2/all`;
+//   fetch(`https://restcountries.eu/rest/v2/all`)
+//     .then((response) => response.json())
+//     .then((json) => {
+//       console.log(json);
+//       return res.status(200).json(json);
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// });
 
 router.get("/filterByValue", async (req, res) => {
   let url = `https://restcountries.eu/rest/v2/all`;

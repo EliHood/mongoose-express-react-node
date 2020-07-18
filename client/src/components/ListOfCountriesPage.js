@@ -113,7 +113,8 @@ class App extends React.Component {
     // });
     try {
       const response = await axios.get(
-        `process.env.REACT_APP_BASE_URL + /api/countries/search`,
+        `/api/countries/search`,
+        // `process.env.REACT_APP_BASE_URL + /api/countries/search`,
         {
           headers: {
             "Content-Type": "application/json",

@@ -217,17 +217,19 @@ class App extends React.Component {
     console.log("No data:", listOfCountries);
 
     const renderListOfCountries =
-      listOfCountries !== []
-        ? listOfCountries.map((country) => (
-            <li
-              onClick={(e) => {
-                this.nameOfCountry(e, country.name);
-              }}
-            >
-              {country.name}
-            </li>
-          ))
-        : null;
+      listOfCountries.length !== 0 ? (
+        listOfCountries.map((country) => (
+          <li
+            onClick={(e) => {
+              this.nameOfCountry(e, country.name);
+            }}
+          >
+            {country.name}
+          </li>
+        ))
+      ) : (
+        <p>no data</p>
+      );
     return (
       <div>
         {this.state.display ? (

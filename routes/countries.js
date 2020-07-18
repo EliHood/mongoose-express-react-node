@@ -27,7 +27,7 @@ filterBySearch = async (array, string) => {
 // }
 
 router.get("/search", auth.isAuthenticated, async (req, res) => {
-  let url = `https://restcountries.eu/rest/v2/all`;
+  let url = `http://restcountries.eu/rest/v2/all`;
   try {
     let response = await axios.get(url);
     console.log(response.data);
@@ -51,7 +51,7 @@ router.get("/search", auth.isAuthenticated, async (req, res) => {
 // });
 
 router.get("/filterByValue", async (req, res) => {
-  let url = `https://restcountries.eu/rest/v2/all`;
+  let url = `http://restcountries.eu/rest/v2/all`;
   let search = req.query.search;
 
   try {
@@ -86,7 +86,7 @@ router.get("/filterByValue", async (req, res) => {
 // });
 
 router.get("/filterBySearch", (req, res) => {
-  let url = `https://restcountries.eu/rest/v2/all`;
+  let url = `http://restcountries.eu/rest/v2/all`;
   let search = req.query.search;
 
   axios({
@@ -123,7 +123,7 @@ router.get("/filterBySearch", (req, res) => {
 router.get("/man/:country", async (req, res) => {
   let country = req.params.country;
   console.log(req.params.country);
-  let url = `https://restcountries.eu/rest/v2/name/${country}?fullText=true`;
+  let url = `http://restcountries.eu/rest/v2/name/${country}?fullText=true`;
   try {
     let response = await axios({
       method: "get",

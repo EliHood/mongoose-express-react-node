@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+const axios = require("axios");
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Search from "./Search";

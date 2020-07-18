@@ -113,6 +113,7 @@ class App extends React.Component {
     // });
     try {
       const response = await axios.get(`http://restcountries.eu/rest/v2/all`);
+      console.log(response);
       this.setState({ listOfCountries: response.data });
       this.setState({ display: true });
       console.log(this.state.listOfCountries);
